@@ -1,0 +1,37 @@
+
+  <form action="<%= action == :new ? cats_url : cat_url(cat) %>" method="post">
+    <% if action == :edit %>
+      <input type="hidden" name="_method" value='PATCH'>
+    <% end %>
+
+  <label>Name:</label>
+  <input type="text" name="cat[name]" value="<%= @cat.name %>">
+</br>
+  <label>Sex:</label>
+  <input type="radio" name="cat[sex]" id="cat_sex_female" value="F" <%= checked="checked" if @cat.sex == "F" %> >
+  <label for="cat_sex_female">Female</label>
+
+  <input type="radio" name="cat[sex]" id="cat_sex_male" value="M" <%= checked="checked" if @cat.sex == "M" %> >
+  <label for="cat_sex_male">Male</label>
+<br>
+  <label>Color:</label>
+  <select name="cat[color]" id="cat_color">
+    <option></option>
+    <option value="red" <%= selected="selected" if @cat.color == "red" %>>Red</option>
+    <option value="orange" <%= selected="selected" if @cat.color == "orange" %>>Orange</option>
+    <option value="yellow" <%= selected="selected" if @cat.color == "yellow" %>>Yellow</option>
+    <option value="green" <%= selected="selected" if @cat.color == "green" %>>Green</option>
+    <option value="blue" <%= selected="selected" if @cat.color == "blue" %>>Blue</option>
+    <option value="indigo" <%= selected="selected" if @cat.color == "indigo" %>>Indigo</option>
+    <option value="violet" <%= selected="selected" if @cat.color == "violet" %>>Violet</option>
+    <option value="rainbow" <%= selected="selected" if @cat.color == "rainbow" %>>Rainbow</option>
+  </select>
+<br>
+  <label>Date:</label>
+  <input type="date" name="cat[birth_date]" value = "<%= @cat.birth_date %>">
+<br>
+  <label>Description:</label><br>
+  <textarea rows="5" cols="20" name=cat[description]><%= @cat.description %></textarea>
+<br>
+  <input type="submit" value="<%= action == :new ? 'Create Kitty Kat': 'Update Kit Kat' %>">
+</form>
